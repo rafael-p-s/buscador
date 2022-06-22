@@ -1,0 +1,93 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(#121212, #212b46);
+}
+
+.title{
+    font-size: 85px;
+    color: #fff;
+    animation: flipTitle 2s;
+}
+
+/* Animação */
+@keyframes flipTitle{
+    from{
+        transform: rotatex(90deg);
+    }
+    to{
+        transform: rotate(0deg);
+    }
+}
+
+/* Configuração dos container */
+/* Esse de baixo está sendo configurado a caixa que vai receber a informação */
+.containerInput{
+    background-color: rgba(255,255,255, 0.2);
+    padding: 15px;
+    margin: 34px 0;
+    display: flex;
+    border-radius: 8px;
+    box-shadow: 1px 3px 8px rgba(0,0,0, 0.5);
+}
+/* já nesse está alterando a transparencia do texto contido na caixa, junto com a margem do icone*/
+.containerInput input{
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    color: #fff;
+    outline: none;
+    margin-right:8px;
+}
+/* esse é para nao deixar muito apagado, após o usuário apagar as informações digitadas na caixa */
+.containerInput input::placeholder{
+    color: #F1f1f1;
+}
+
+/* botão de pesquisa */
+/* configurações da aparencia do icone de lupa */
+.buttonSearch{
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer;
+    transition: transform 0.5s;
+}
+/* efeito para o icone de lupa */
+.buttonSearch:hover{
+    transform: scale(1.2);
+}
+/* parte de configuração do MAIN, ou parte que exibe informção */
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    width: 500px;
+    border-radius: 8px;
+}
+.main h2{
+    margin: 16px 0;
+    font-size: 39px;
+}
+main span{
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+/* criando MEDIA para alteração de tamanhos */
+@media (max-width: 600px){
+    .title{
+        font-size: 60px;
+    }
+    .main{
+        width: 80%;
+        min-height: 250px;
+    }
+}
