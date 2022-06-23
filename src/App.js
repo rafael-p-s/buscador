@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import './style.css';
+import axios from "axios";
 
 import api from './services/api';
 
@@ -13,11 +14,15 @@ function App() {
     if(input === ''){
       alert("Preencha algum cep!")
       return;
+
     }
 
     try{
-      const response = await api.get("viacep.com.br/ws/"+input+"/json");
-      console.log(response)
+ 
+        axios.get(`https://viacep.com.br/ws/${input}/json/`).then(res => {
+       console.log(res.data)
+      })
+
     }catch{
       alert("Ops erro ao buscar");
     }
