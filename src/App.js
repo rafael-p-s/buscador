@@ -18,7 +18,6 @@ function App() {
     }
 
     try{
- 
         axios.get(`https://viacep.com.br/ws/${input}/json/`).then(res => {
        console.log(res.data)
       })
