@@ -8,6 +8,7 @@ import api from './services/api';
 function App() {
 
   const [input, setInput] = useState('')
+  const [cep, setCep] = useState ({});
 
   async function handleSearch(){
 
@@ -18,12 +19,16 @@ function App() {
     }
 
     try{
-        axios.get(`https://viacep.com.br/ws/${input}/json/`).then(res => {
-       console.log(res.data)
+        await axios.get(`https://viacep.com.br/ws/${input}/json/`,
+        ).then(res => {
+       console.log(res.data);
+       setCep(res.data)
+       setInput("");
       })
-
+      
     }catch{
       alert("Ops erro ao buscar");
+      setInput("")
     }
 
   }
@@ -44,12 +49,12 @@ function App() {
 
         <main className='main'>
 
-          <h2>Cep: 19020360</h2>
+          <h2>Cep: {cep.cep}</h2>
 
-          <span>Rua: Teste alguma</span>
-          <span>Complemente: Algum complemento</span>
-          <span>Vila Rosa</span>
-          <span>Presidente Prudente - SP</span>
+          <span>Rua: {cep.logradouro}</span>
+          <span>Complemento: {cep.complemento}</span>
+          <span>{cep.bairro}</span>
+          <span>{cep.localidade}-{cep.uf}</span>
 
         </main>
 
