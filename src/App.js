@@ -21,7 +21,6 @@ function App() {
     try{
         await axios.get(`https://viacep.com.br/ws/${input}/json/`,
         ).then(res => {
-       console.log(res.data);
        setCep(res.data)
        setInput("");
       })
